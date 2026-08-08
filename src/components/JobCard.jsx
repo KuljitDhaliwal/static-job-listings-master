@@ -18,7 +18,7 @@ function JobCard({ item, handleSetFilter }) {
                             px-2 text-sm py-1 rounded-2xl uppercase">featured</div>
                             )}
                         </div>
-                        <p className='font-bold'>{item.position}</p>
+                        <p onClick={()=>handleSetFilter(item.position)} className='font-bold cursor-pointer'>{item.position}</p>
                         <div className="flex gap-4 items-center text-grey text-sm">
                             <p>{item.postedAt}</p>
                             <span className="self-center">&bull;</span>
@@ -32,7 +32,7 @@ function JobCard({ item, handleSetFilter }) {
                 <div className="flex gap-4 flex-wrap md:justify-end w-full md:w-auto max-w-full md:max-w-xl">
                     <button onClick={()=>handleSetFilter(item.role)} className='text-primary-green-400 cursor-pointer md:text-sm bg-background-green font-semibold py-1 px-2'>{item.role}</button>
                     <button onClick={()=>handleSetFilter(item.level)} className='text-primary-green-400 cursor-pointer md:text-sm bg-background-green font-semibold py-1 px-2'>{item.level}</button>
-                    {item.languages.map((item, key) => <button key={key} onClick={()=>handleSetFilter(item)} className='text-primary-green-400 cursor-pointer md:text-sm bg-background-green font-semibold py-1 px-2'>{item}</button>)}
+                    {item.languages.map((item) => <button key={item} onClick={()=>handleSetFilter(item)} className='text-primary-green-400 cursor-pointer md:text-sm bg-background-green font-semibold py-1 px-2'>{item}</button>)}
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import { useAddFilter } from '../hooks/useAddFilter'
 function Jobs() {
     const { state } = useContext(JobFilterContext)
     const { handleSetFilter } = useAddFilter()
+    const jobbs = state.filters.length > 0 ? state.filteredData : Data
     return (
         <div className='relative'>
             <div className="w-full bg-primary-green-400 relative -z-1">
@@ -18,9 +19,12 @@ function Jobs() {
             {state.filters.length > 0 && <SearchBar />}
             <div className="max-w-6xl m-auto w-full px-4 py-20">
                 <div className="grid md:gap-6 gap-15">
-                    {Data.map(item => {
-                        return <JobCard item={item} key={item.id} handleSetFilter={handleSetFilter}/>
-                    })}
+                    {jobbs && (
+                        jobbs.map(item => {
+                            return <JobCard item={item} key={item.id} handleSetFilter={handleSetFilter} />
+                        })
+                        )
+                    }
                 </div>
             </div>
         </div>

@@ -2,7 +2,8 @@ import { useReducer } from "react";
 import { JobFilterContext } from "./JobFilterContext";
 
 const initialState = {
-    filters: []
+    filters: [],
+    filteredData: []
 }
 
 function reducer(state, action) {
@@ -23,7 +24,14 @@ function reducer(state, action) {
         case 'clearSearchbar':
             return {
                 ...state, 
-                filters: []
+                filters: [],
+                filteredData: []
+            }
+
+        case 'filterData':
+            return {
+                ...state,
+                filteredData: action.payload
             }
 
         default:
