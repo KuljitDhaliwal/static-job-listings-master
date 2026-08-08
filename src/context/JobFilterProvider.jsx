@@ -3,7 +3,6 @@ import { JobFilterContext } from "./JobFilterContext";
 
 const initialState = {
     filters: [],
-    filteredData: []
 }
 
 function reducer(state, action) {
@@ -26,12 +25,6 @@ function reducer(state, action) {
                 ...state, 
                 filters: [],
                 filteredData: []
-            }
-
-        case 'filterData':
-            return {
-                ...state,
-                filteredData: action.payload
             }
 
         default:

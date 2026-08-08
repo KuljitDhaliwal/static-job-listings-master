@@ -1,8 +1,8 @@
 
 import Times from '../assets/images/icon-remove.svg'
-import { useAddFilter } from '../hooks/useAddFilter'
+import { useJobFilters } from '../hooks/useJobFilters'
 function FilterCard({item}) {
-    const { handleRemoveFilter } = useAddFilter()
+    const { handleRemoveFilter } = useJobFilters()
     return (
         <div className="flex">
             <p className='text-primary-green-400 md:text-sm bg-background-green font-semibold py-1 px-2'>{item}</p>

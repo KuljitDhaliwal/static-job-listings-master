@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import FilterCard from "./FilterCard"
 import { JobFilterContext } from "../context/JobFilterContext"
-import { useAddFilter } from "../hooks/useAddFilter"
+import { useJobFilters } from "../hooks/useJobFilters"
 
 
 function SearchBar() {
   const { state } = useContext(JobFilterContext)
-  const { handleClearFilter } = useAddFilter()
+  const { handleClearFilter } = useJobFilters()
   return (
     <div className="max-w-6xl px-4 sticky top-0 z-10 m-auto p-6 bg-white shadow-xl -mt-8 rounded-md flex justify-between">
       <div className="flex gap-4 flex-wrap">

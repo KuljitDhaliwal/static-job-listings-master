@@ -1,7 +1,6 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { JobFilterContext } from "../context/JobFilterContext"
-import Data from '../data.json'
-export const useAddFilter = () => {
+export const useJobFilters = () => {
 
     const { state, dispatch } = useContext(JobFilterContext)
     //SetFilter
@@ -31,9 +30,9 @@ export const useAddFilter = () => {
     }
 
 
-    useEffect(() => {
-
-        if(state.filters.length > 0){
+    //Calculate Filters
+    const handleFilters = (Data) => {
+        if (state.filters.length > 0) {
             const data = Data.filter(job => {
                 const filtered = [
                     job.role,
@@ -44,15 +43,13 @@ export const useAddFilter = () => {
                 ]
                 return state.filters.every(item => filtered.includes(item))
             })
-
-            dispatch({
-                type: 'filterData',
-                payload: data
-            })
+            return data
+        } else {
+            return []
         }
+    }
 
-    }, [state.filters, dispatch])
 
 
-return { handleSetFilter, handleRemoveFilter, handleClearFilter }
+    return { handleSetFilter, handleRemoveFilter, handleClearFilter, handleFilters }
 }

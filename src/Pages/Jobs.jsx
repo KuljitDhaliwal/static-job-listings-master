@@ -5,11 +5,13 @@ import JobCard from '../components/JobCard'
 import SearchBar from '../components/SearchBar'
 import Data from '../data.json'
 import { JobFilterContext } from '../context/JobFilterContext'
-import { useAddFilter } from '../hooks/useAddFilter'
+import { useJobFilters } from '../hooks/useJobFilters'
 function Jobs() {
     const { state } = useContext(JobFilterContext)
-    const { handleSetFilter } = useAddFilter()
-    const jobbs = state.filters.length > 0 ? state.filteredData : Data
+    const { handleSetFilter, handleFilters } = useJobFilters()
+    const filteredData = handleFilters(Data)
+
+    const jobbs = state.filters.length > 0 ? filteredData : Data
     return (
         <div className='relative'>
             <div className="w-full bg-primary-green-400 relative -z-1">
@@ -23,7 +25,7 @@ function Jobs() {
                         jobbs.map(item => {
                             return <JobCard item={item} key={item.id} handleSetFilter={handleSetFilter} />
                         })
-                        )
+                    )
                     }
                 </div>
             </div>
